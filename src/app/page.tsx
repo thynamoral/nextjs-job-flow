@@ -1,3 +1,4 @@
+import JobFilterSideBar from "@/components/JobFilterSidebar";
 import JobListItem from "@/components/JobListItem";
 import prisma from "@/lib/prisma";
 
@@ -11,12 +12,15 @@ export default async function Home() {
 
   return (
     <main className="m-auto my-10 max-w-5xl space-y-10 px-3">
-      <section>
-        <div className="space-y-4 text-center">
-          <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl">
-            Developer Jobs
-          </h1>
-          <p className="text-muted-foreground">Find your dream job</p>
+      <div className="space-y-4 text-center">
+        <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl">
+          Developer Jobs
+        </h1>
+        <p className="text-muted-foreground">Find your dream job</p>
+      </div>
+      <section className="flex flex-col gap-4 md:flex-row">
+        <JobFilterSideBar />
+        <div className="grow space-y-4">
           {jobs.map((job) => (
             <JobListItem key={job.id} job={job} />
           ))}
